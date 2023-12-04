@@ -31,52 +31,50 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <Private>false</Private>
-      <HintPath>..\include\Assembly-CSharp.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="DissonanceVoip">
       <Private>false</Private>
-      <HintPath>..\include\DissonanceVoip.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\DissonanceVoip.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch Transport for Netcode for GameObjects">
       <Private>false</Private>
-      <HintPath>..\include\Facepunch Transport for Netcode for GameObjects.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Facepunch Transport for Netcode for GameObjects.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch.Steamworks.Win64">
       <Private>false</Private>
-      <HintPath>..\include\Facepunch.Steamworks.Win64.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
+    </Reference>
+    <Reference Include="LC_API">
+      <HintPath>..\..\2018-LC_API-2.1.1\BepInEx\plugins\LC_API.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections">
       <Private>false</Private>
-      <HintPath>..\include\Unity.Collections.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
       <Private>false</Private>
-      <HintPath>..\include\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
       <Private>false</Private>
-      <HintPath>..\include\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Netcode.Components">
       <Private>false</Private>
-      <HintPath>..\include\Unity.Netcode.Components.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.Netcode.Components.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Netcode.Runtime">
       <Private>false</Private>
-      <HintPath>..\include\Unity.Netcode.Runtime.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.Netcode.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <Private>false</Private>
-      <HintPath>..\include\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <Private>false</Private>
-      <HintPath>..\include\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    
-    <Reference Include="LC_API">
-      <Private>false</Private>
-      <HintPath>..\include\LC_API.dll</HintPath>
+      <HintPath>H:\Games\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
 

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using GameNetcodeStuff;
+using Mono.CompilerServices.SymbolWriter;
 
 namespace Coroner {
     class AdvancedDeathTracker {
@@ -22,11 +24,11 @@ namespace Coroner {
         }
 
         public static void SetCauseOfDeath(PlayerControllerB playerController, CauseOfDeath causeOfDeath, bool broadcast = true) {
-            SetCauseOfDeath((int) playerController.playerClientId, ConvertCauseOfDeath(causeOfDeath), broadcast);
+            SetCauseOfDeath((int)playerController.playerClientId, ConvertCauseOfDeath(causeOfDeath), broadcast);
         }
 
         public static void SetCauseOfDeath(PlayerControllerB playerController, AdvancedCauseOfDeath causeOfDeath, bool broadcast = true) {
-            SetCauseOfDeath((int) playerController.playerClientId, causeOfDeath, broadcast);
+            SetCauseOfDeath((int)playerController.playerClientId, causeOfDeath, broadcast);
         }
 
         public static AdvancedCauseOfDeath GetCauseOfDeath(int playerIndex) {
@@ -36,12 +38,12 @@ namespace Coroner {
         }
 
         public static AdvancedCauseOfDeath GetCauseOfDeath(PlayerControllerB playerController) {
-            if (!PlayerCauseOfDeath.ContainsKey((int) playerController.playerClientId)) {
+            if (!PlayerCauseOfDeath.ContainsKey((int)playerController.playerClientId)) {
                 Plugin.Instance.PluginLogger.LogInfo($"Player {playerController.playerClientId} has no custom cause of death stored! Using fallback...");
                 return GuessCauseOfDeath(playerController);
             } else {
-                Plugin.Instance.PluginLogger.LogInfo($"Player {playerController.playerClientId} has custom cause of death stored! {PlayerCauseOfDeath[(int) playerController.playerClientId]}");
-                return PlayerCauseOfDeath[(int) playerController.playerClientId];
+                Plugin.Instance.PluginLogger.LogInfo($"Player {playerController.playerClientId} has custom cause of death stored! {PlayerCauseOfDeath[(int)playerController.playerClientId]}");
+                return PlayerCauseOfDeath[(int)playerController.playerClientId];
             }
         }
 
@@ -114,80 +116,87 @@ namespace Coroner {
         public static string StringifyCauseOfDeath(AdvancedCauseOfDeath causeOfDeath) {
             switch (causeOfDeath) {
                 case AdvancedCauseOfDeath.Bludgeoning:
-                    return "Bludgeoned to death.";
+                    return PickRandom(CauseOfDeathStrings.bldgnList);
                 case AdvancedCauseOfDeath.Gravity:
-                    return "Fell to their death.";
+                    return PickRandom(CauseOfDeathStrings.grvList);
                 case AdvancedCauseOfDeath.Blast:
-                    return "Went out with a bang.";
+                    return PickRandom(CauseOfDeathStrings.blastList);
                 case AdvancedCauseOfDeath.Strangulation:
-                    return "Strangled to death.";
+                    return PickRandom(CauseOfDeathStrings.strngList);
                 case AdvancedCauseOfDeath.Suffocation:
-                    return "Suffocated to death.";
+                    return PickRandom(CauseOfDeathStrings.suffList);
                 case AdvancedCauseOfDeath.Mauling:
-                    return "Mauled to death.";
+                    return PickRandom(CauseOfDeathStrings.maulList);
                 case AdvancedCauseOfDeath.Gunshots:
-                    return "Shot to death by a turret.";
+                    return PickRandom(CauseOfDeathStrings.shotList);
                 case AdvancedCauseOfDeath.Crushing:
-                    return "Crushed to death.";
+                    return PickRandom(CauseOfDeathStrings.crshList);
                 case AdvancedCauseOfDeath.Drowning:
-                    return "Drowned to death.";
+                    return PickRandom(CauseOfDeathStrings.drownList);
                 case AdvancedCauseOfDeath.Abandoned:
-                    return "Abandoned by their coworkers.";
+                    return PickRandom(CauseOfDeathStrings.abndnList);
                 case AdvancedCauseOfDeath.Electrocution:
-                    return "Electrocuted to death.";
+                    return PickRandom(CauseOfDeathStrings.elecList);
 
                 case AdvancedCauseOfDeath.Enemy_Bracken:
-                    return "Had their neck snapped by a Bracken.";
+                    return PickRandom(CauseOfDeathStrings.brcknList);
                 case AdvancedCauseOfDeath.Enemy_EyelessDog:
-                    return "Was eaten by an Eyeless Dog.";
+                    return PickRandom(CauseOfDeathStrings.dogList);
                 case AdvancedCauseOfDeath.Enemy_ForestGiant:
-                    return "Swallowed whole by a Forest Giant.";
+                    return PickRandom(CauseOfDeathStrings.giantList);
                 case AdvancedCauseOfDeath.Enemy_CircuitBees:
-                    return "Electro-stung to death by Circuit Bees.";
+                    return PickRandom(CauseOfDeathStrings.beeList);
                 case AdvancedCauseOfDeath.Enemy_GhostGirl:
-                    return "Died a mysterious death.";
+                    return PickRandom(CauseOfDeathStrings.ghostList);
                 case AdvancedCauseOfDeath.Enemy_EarthLeviathan:
-                    return "Swallowed whole by an Earth Leviathan.";
+                    return PickRandom(CauseOfDeathStrings.lvthnList);
                 case AdvancedCauseOfDeath.Enemy_BaboonHawk:
-                    return "Was eaten by a Baboon Hawk.";
+                    return PickRandom(CauseOfDeathStrings.hawkList);
                 case AdvancedCauseOfDeath.Enemy_Jester:
-                    return "Was the butt of a joke.";
+                    return PickRandom(CauseOfDeathStrings.jstrList);
                 case AdvancedCauseOfDeath.Enemy_SnareFlea:
-                    return "Was suffocated a Snare Flea.";
+                    return PickRandom(CauseOfDeathStrings.fleaList);
                 case AdvancedCauseOfDeath.Enemy_Hygrodere:
-                    return "Was absorbed by a Hygrodere.";
+                    return PickRandom(CauseOfDeathStrings.blobList);
                 case AdvancedCauseOfDeath.Enemy_HoarderBug:
-                    return "Was hoarded by a Hoarder Bug.";
+                    return PickRandom(CauseOfDeathStrings.hrdrList);
                 case AdvancedCauseOfDeath.Enemy_SporeLizard:
-                    return "Was puffed by a Spore Lizard.";
+                    return PickRandom(CauseOfDeathStrings.lzrdList);
                 case AdvancedCauseOfDeath.Enemy_SandSpider:
-                    return "Ensnared in the Sand Spider's web.";
+                    return PickRandom(CauseOfDeathStrings.spdrList);
 
                 case AdvancedCauseOfDeath.Jetpack_Gravity:
-                    return "Flew too close to the sun.";
+                    return PickRandom(CauseOfDeathStrings.jtpkGrvList);
                 case AdvancedCauseOfDeath.Jetpack_Blast:
-                    return "Turned into a firework.";
+                    return PickRandom(CauseOfDeathStrings.jtpkBlstList);
                 case AdvancedCauseOfDeath.Player_Murder:
-                    return "Was the victim of a murder.";
+                    return PickRandom(CauseOfDeathStrings.mrdrList);
                 case AdvancedCauseOfDeath.Player_Quicksand:
-                    return "Got stuck in quicksand.";
+                    return PickRandom(CauseOfDeathStrings.qksndList);
                 case AdvancedCauseOfDeath.Player_DepositItemsDesk:
-                    return "Received a demotion.";
+                    return PickRandom(CauseOfDeathStrings.deskList);
                 case AdvancedCauseOfDeath.Player_Dropship:
-                    return "Couldn't wait for their items.";
+                    return PickRandom(CauseOfDeathStrings.drpshpList);
                 case AdvancedCauseOfDeath.Player_StunGrenade:
-                    return "Was the victim of a murder.";
+                    return PickRandom(CauseOfDeathStrings.grndList);
 
                 case AdvancedCauseOfDeath.Unknown:
-                    return "Most sincerely dead.";
+                    return PickRandom(CauseOfDeathStrings.unknwnList);
                 default:
-                    return "Most sincerely dead.";
+                    return PickRandom(CauseOfDeathStrings.unknwnList);
             }
         }
 
         internal static void SetCauseOfDeath(PlayerControllerB playerControllerB, object enemy_BaboonHawk)
         {
             throw new NotImplementedException();
+        }
+
+        public static string PickRandom(List<string> source)
+        {
+            Random r = new Random();
+            var i = r.Next(source.Count);
+            return source[i];
         }
     }
 

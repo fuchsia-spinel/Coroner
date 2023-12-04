@@ -1,5 +1,7 @@
 # Coroner
 
+**NOTE:** This is a fork of the Coroner mod for personal/friend use. At this time, it adds a single feature: multiple lines of text per cause of death, chosen at random.
+
 A plugin which overhauls the end-of-mission Performance Report with new information, including cause of death for any deceased players. There are some fun easter eggs thrown in too.
 
 **NOTE:** [LC_API](https://thunderstore.io/c/lethal-company/p/2018/LC_API/) is an optional but highly recommended dependency!
