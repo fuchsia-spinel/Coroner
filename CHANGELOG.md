@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0F
+## Additions
+- Moved all of the cause of death messages to lists and made it so that one of the messages is picked at random.
+
 ## 1.1.0
 ## Additions
 - Added a custom cause of death for the dropship.
